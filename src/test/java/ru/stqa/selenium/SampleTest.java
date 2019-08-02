@@ -3,30 +3,21 @@ package ru.stqa.selenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.selenium.pages.HomePageHelper;
 
-import ru.stqa.selenium.pages.HomePage;
+public class SampleTest extends TestBase {
 
-public class SampleTestNgTest extends TestNgTestBase {
-
-  private HomePage homepage;
+  HomePageHelper homepage;
 
   @BeforeMethod
   public void initPageObjects() {
-    homepage = PageFactory.initElements(driver, HomePage.class);
+    homepage = PageFactory.initElements(driver, HomePageHelper.class);
   }
 
   @Test
   public void testHomePageHasAHeader() throws InterruptedException {
-    driver.get(baseUrl);
-    System.out.println("Title: " + driver.getTitle());
-
-    Thread.sleep(15000);
-
-    driver.findElement(By.id("closedIntro")).click();
-    Thread.sleep(15000);
     System.out.println("Element: " +
             driver.findElement(By.id("idtitletypesearchevents")).getText());
     driver.findElement(By.id("idsignin")).click();
